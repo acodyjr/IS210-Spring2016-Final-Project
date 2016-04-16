@@ -45,3 +45,22 @@ Sarah’s Story
 ----------------------------
 
 As Sarah the Soda Drinker, I want to accurately calculate my portion of the total bill so that I can leave knowing I am not overspending my personal budgets especially on items that I did not order or consume.
+
+Acceptance Stories
+====================
+
+| **Scenario 01: Calculating Individual Tabs**
+| Given that I have a known number in a group,
+| And that I have an itemized receipt,
+| And that the members only want to pay for themselves,
+| When I enter the number of members in the group
+| Then I will be able to enter their item costs individually
+| And the output will produce individual tabs factoring tip.
+
+| **Scenario 02: Calculating Even-Split Tabs**
+| Given that I have a known number in a group,
+| And that we have the total amount due,
+| And that the members wish to split the tab proportionally,
+| When I enter the number of members in the group,
+| Then I can select ``Split Evenly``
+| sAnd the output will evenly split the total tab and add tip.
