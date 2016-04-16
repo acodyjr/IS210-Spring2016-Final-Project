@@ -56,7 +56,7 @@ Acceptance Stories
 | When I enter the number of members in the group
 | Then I will be able to enter their item costs individually
 | And the output will produce individual tabs factoring tip.
-
+|
 | **Scenario 02: Calculating Even-Split Tabs**
 | Given that I have a known number in a group,
 | And that we have the total amount due,
