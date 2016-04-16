@@ -63,4 +63,4 @@ Acceptance Stories
 | And that the members wish to split the tab proportionally,
 | When I enter the number of members in the group,
 | Then I can select ``Split Evenly``
-| sAnd the output will evenly split the total tab and add tip.
+| And the output will evenly split the total tab and add tip.
