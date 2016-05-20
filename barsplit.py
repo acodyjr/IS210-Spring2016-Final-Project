@@ -69,8 +69,8 @@ def billsplitter(totalbill, groupsize, servicerating):
     totalwithtip = dec.Decimal(totalbill *
                                (1 + dec.Decimal(servicerating) / 100))
     totaleach = dec.Decimal(totalwithtip)/groupsize
-    print '\n', LINEDIV, ('\n\nThe total with tip is: $ '), dec.Decimal(totalwithtip)
-    print ('\nTotal amount due per person: $ '), dec.Decimal(totaleach)
+    print '\n', LINEDIV, ('\n\nThe total with tip is: $ '), round(totalwithtip, 2)
+    print ('\nTotal amount due per person: $ '), round(totaleach, 2)
     restart()
 
 
@@ -105,7 +105,7 @@ def costcalculator(groupsize, servicerating):
         counter += 1
     print '\n', LINEDIV
     for names, amount in fnames.iteritems():
-        print '\n', names, 'owes $', amount
+        print '\n', names, 'owes $', round(amount, 2)
     restart()
 
 def restart():
