@@ -3,7 +3,6 @@
 """Bar|$plit - Paying only your share of the tab."""
 
 import decimal as dec
-import os
 
 
 WELCOME = '*****Welcome to Bar|$plit*****\n'
@@ -22,6 +21,7 @@ LINEDIV = '*' * 35
 FNAME_RAW = '\nWho is dining member {0}? '
 ITEMS_RAW = 'How many items did {0} have? '
 BILL_ITEMS = 'What is the cost of item {0} for {1}? $'
+
 
 def startup():
     """Function to acquire initial data input to process.
@@ -49,7 +49,8 @@ def startup():
     elif groupsize == 1:
         totalbill = dec.Decimal(raw_input(TOTAL_PROMPT))
         billsplitter(totalbill, groupsize, servicerating)
-            
+
+
 def billsplitter(totalbill, groupsize, servicerating):
     """Function to perform an even split on a tab.
 
@@ -62,14 +63,38 @@ def billsplitter(totalbill, groupsize, servicerating):
         dec: Amount each person contributes to cover full amount.
 
     Examples:
-        >>>
+        >>>*****Welcome to Bar|$plit*****
+        >>>How many people are paying the tab? 3
+        >>>On a scale of 1-5, how would you rate your service? 4
+        >>>Based on your rating, a 15% tip is proper. Continue? (y/n) y
+        >>>Will you be splitting the bill evenly? (y/n) y
+        >>>What is the total amount due? $37.59
 
-        >>>
+        ***********************************
+
+        Total with tip is: $  43.23
+
+        Total amount due per person: $  14.41
+
+        Start over? (y/n)
+
+        >>>How many people are paying the tab? 1
+        >>>On a scale of 1-5, how would you rate your service? 5
+        >>>Based on your rating, a 20% tip is proper. Continue? (y/n) y
+        >>>What is the total amount due? $25.43
+
+        ***********************************
+
+        Total with tip is: $  30.52
+
+        Total amount due per person: $  30.52
+
+        Start over? (y/n)
     """
     totalwithtip = dec.Decimal(totalbill *
                                (1 + dec.Decimal(servicerating) / 100))
     totaleach = dec.Decimal(totalwithtip)/groupsize
-    print '\n', LINEDIV, ('\n\nThe total with tip is: $ '), round(totalwithtip, 2)
+    print '\n', LINEDIV, ('\n\nTotal with tip is: $ '), round(totalwithtip, 2)
     print ('\nTotal amount due per person: $ '), round(totaleach, 2)
     restart()
 
@@ -83,11 +108,30 @@ def costcalculator(groupsize, servicerating):
 
     Returns:
         dict: Dictionary key/vals printed showing amounts due per person.
-        
-    Examples:
-        >>>
 
-        >>>
+    Examples:
+        >>>*****Welcome to Bar|$plit*****
+        >>>How many people are paying the tab? 2
+        >>>On a scale of 1-5, how would you rate your service? 5
+        >>>Based on your rating, a 20% tip is proper. Continue? (y/n) y
+        >>>Will you be splitting the bill evenly? (y/n) n
+
+        >>>Who is dining member 1? Foo
+        >>>How many items did Foo have? 1
+        >>>What is the cost of item 1 for Foo? $8.59
+
+        >>>Who is dining member 2? Bar
+        >>>How many items did Bar have? 2
+        >>>What is the cost of item 1 for Bar? $9.95
+        >>>What is the cost of item 2 for Bar? $12.35
+
+        ***********************************
+
+        Foo owes $ 10.31
+
+        Bar owes $ 26.76
+
+        Start over? (y/n)
     """
     counter, billitems, billcounter, billtotal, nametotal = 0, 0, 0, 0, 0
     fnames = {}
@@ -96,7 +140,7 @@ def costcalculator(groupsize, servicerating):
         billitems = int(raw_input(ITEMS_RAW.format(fname)))
         while billcounter < billitems:
             billtotal = dec.Decimal(
-                         raw_input(BILL_ITEMS.format(billcounter + 1, fname)))
+                raw_input(BILL_ITEMS.format(billcounter + 1, fname)))
             nametotal += billtotal
             billcounter += 1
         nametotal += nametotal * (servicerating/100)
@@ -107,6 +151,7 @@ def costcalculator(groupsize, servicerating):
     for names, amount in fnames.iteritems():
         print '\n', names, 'owes $', round(amount, 2)
     restart()
+
 
 def restart():
     """A function to restart the calculator if desired after output.
@@ -121,5 +166,5 @@ def restart():
         startup()
     else:
         print 'Thank you for using Bar|$plit!'
-    
-startup()  ## Initiate program.
+
+startup()
