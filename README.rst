@@ -64,3 +64,15 @@ Acceptance Stories
 | When I enter the number of members in the group,
 | Then I can select ``Split Evenly``
 | And the output will evenly split the total tab and add tip.
+
+
+Instructions
+============
+
+Installation
+---------------------
+No additional modules are needed outside of barsplit.py.
+
+Using the Program
+---------------------------------
+Execute the program to initiate the series of prompts needed to complete the calculations. No external file is needed to import as all information is based on user input realtime. Follow the on-screen prompts to enter valid data and to determine the type of calculation desired.
